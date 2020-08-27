@@ -1,6 +1,6 @@
 {
   "name": "Raiffeisen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "project_id": "000000",
   "description": "Raiffeisen",
   "author": "peppers",
@@ -70,7 +70,9 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "latest",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
     "@babel/plugin-proposal-class-properties": "latest",
     "@babel/plugin-proposal-decorators": "latest",
     "@babel/plugin-proposal-export-namespace-from": "latest",
@@ -83,7 +85,7 @@
     "@babel/plugin-syntax-dynamic-import": "latest",
     "@babel/plugin-syntax-import-meta": "latest",
     "@babel/polyfill": "latest",
-    "@babel/preset-env": "latest",
+    "@babel/preset-env": "^7.11.0",
     "babel-eslint": "latest",
     "babelify": "latest",
     "browser-sync": "latest",
