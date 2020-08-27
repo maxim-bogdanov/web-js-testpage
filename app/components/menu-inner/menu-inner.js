@@ -1,9 +1,6 @@
 import { eventBus, $window } from '../../scripts/shared';
 
 $(eventBus).on('main:ready',function(e, data){
-    
-    console.log('=>', e, data);
-    
 
     // Menu >>>
     let $menu = $('.menu-inner__list');
@@ -23,14 +20,24 @@ $(eventBus).on('main:ready',function(e, data){
         }
     }
 
+
+    // Event change-page
     $('.menu-inner__item').on('click', function(e) {
         e.preventDefault();
         const pageId = $('a', e.currentTarget).data('page-id');
-        console.log('click', pageId);
-        $(eventBus).trigger('change-page', pageId );
+        let info = {
+            data: data,
+            pageId: pageId
+        };
+        $(eventBus).trigger('change-page', info );
     });
 
-
+    // Event page-changed
+    $(eventBus).on('page-changed', function(e, info){
+        console.log(`.menu-inner__item[data-page-id="${info.pageId}"]`);
+        $('.menu-inner__item_choosed').toggleClass('menu-inner__item_choosed');
+        $(`.menu-inner__item >a[data-page-id="${info.pageId}"]`).toggleClass('menu-inner__item_choosed');
+    });
 
 
     // Buttons >>>
@@ -44,38 +51,20 @@ $(eventBus).on('main:ready',function(e, data){
     }
     $(`<div class="links-button">${butons}</div>`).appendTo($menu);
 
-
-    $menu.after('<div class="menu-inner__download"></div>');
-    const $menuDownload =$('.menu-inner__download');
-
     const $downloadButton = $('.menu-inner__download-button');
     if( data.download && data.download.title ){
         $('.menu-inner__download-button-text').html(data.download.title);
         $downloadButton.find('>a').attr('href',data.download.href);
-    }else{
+    } else{
         $downloadButton.hide();
     }
 
 
     // Footer
-    /*
-    $menuDownload.append(
-        [
-            `<div class="menu-inner__download-button">`,
-            `<a class="link_button" href="${data.download.href}">`,
-            `<div class="menu-inner__download-button-img"></div>`,
-            `<div class="menu-inner__download-button-text">${data.download.title}</div></a></div>`
-        ].join('')
-    );
-*/
-    // $menuDownload.append(
-    //     [
-    //         `<p class="menu-inner__footer">`,
-    //         `${data.footer.copyright}<br>`,
-    //         `<a class='menu-inner__footer-link' ${data.footer.copyright2.attr}> ${data.footer.copyright2.title}</a>`
-    //     ].join('')
-    // );
-
+    const $menuFooter = $('.menu-inner__footer');
+    $menuFooter.prepend(data.footer.copyright);
+    const copyright2 = data.footer.copyright2;
+    $('.menu-inner__footer-link').attr('href', copyright2.href).attr('target', copyright2.target).html(copyright2.title);
 
     
 });
