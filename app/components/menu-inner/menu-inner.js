@@ -5,7 +5,7 @@ $(eventBus).on('main:ready',function(e, data){
     const $components = $('.menu-inner');
     if(!$components.length) return;
 
-    $components.each((i,component)=>{
+    $components.each((i,component) => {
 
         const $component = $(component);
 
@@ -28,25 +28,20 @@ $(eventBus).on('main:ready',function(e, data){
             }
         }
 
-        $('.menu-inner__item').first().addClass('menu-inner__item_choosed');
+        $('.menu-inner__item', $component).first().addClass('menu-inner__item_choosed');
 
 
         // Event change-page
-        $('.menu-inner__item').on('click', function(e) {
+        $('.menu-inner__item',$component).on('click', function(e) {
             e.preventDefault();
             const pageId = $('a', e.currentTarget).data('page-id');
-            // let info = {
-            //     data: data,
-            //     pageId: pageId
-            // };
             $(eventBus).trigger('change-page', pageId );
         });
 
         // Event page-changed
-        $(eventBus).on('page-changed', function(e, info){
-            console.log(`.menu-inner__item[data-page-id="${info.pageId}"]`);
-            $('.menu-inner__item_choosed').toggleClass('menu-inner__item_choosed');
-            $(`.menu-inner__item >a[data-page-id="${info.pageId}"]`).toggleClass('menu-inner__item_choosed');
+        $(eventBus).on('page-changed', function(e, pageId){
+            $('.menu-inner__item_choosed',$component).removeClass('menu-inner__item_choosed');
+            $(`[data-page-id="${pageId}"]`,$component).addClass('menu-inner__item_choosed');
         });
 
 
@@ -63,7 +58,7 @@ $(eventBus).on('main:ready',function(e, data){
 
         const $downloadButton = $('.menu-inner__download-button',$component);
         if( data.download && data.download.title ){
-            $('.menu-inner__download-button-text').html(data.download.title);
+            $('.menu-inner__download-button-text', $component).html(data.download.title);
             $downloadButton.find('>a').attr('href',data.download.href);
         } else{
             $downloadButton.hide();
@@ -74,7 +69,7 @@ $(eventBus).on('main:ready',function(e, data){
         const $menuFooter = $('.menu-inner__footer',$component);
         $menuFooter.prepend(data.footer.copyright);
         const copyright2 = data.footer.copyright2;
-        $('.menu-inner__footer-link').attr('href', copyright2.href).attr('target', copyright2.target).html(copyright2.title);
+        $('.menu-inner__footer-link', $component).attr('href', copyright2.href).attr('target', copyright2.target).html(copyright2.title);
 
 
     });

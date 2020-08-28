@@ -6,18 +6,12 @@ import { event, data } from 'jquery';
 
 $(function(){
 
-    let info = {};
-   
     $.getJSON('data.json', function(data) {
-        info = {
-            data: data
-        };
         $(eventBus).trigger('main:ready', data );
     });
 
     $(eventBus).on('change-page', function(e, pageId) {
-        info.pageId = pageId;
-        $(eventBus).trigger('page-changed', info );
+        $(eventBus).trigger('page-changed', pageId );
     });
 
 });
