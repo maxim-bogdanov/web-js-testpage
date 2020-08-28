@@ -1,0 +1,8 @@
+.helpers {
+  // Константы
+  @mixin mod($mod) {
+    @include modifier("helpers", $mod){
+      @content;
+    }
+  }
+}

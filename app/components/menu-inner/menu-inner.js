@@ -64,20 +64,22 @@ $(eventBus).on('main:ready',function(e, data){
         }
         $(`<div class="links-button">${butons}</div>`, $component).appendTo($menu);
 
+
+        // Download >>>
         const $downloadButton = $('.menu-inner__download-button',$component);
         if( data.download && data.download.title ){
-            $('.menu-inner__download-button-text', $component).html(data.download.title);
             $downloadButton.find('>a').attr('href',data.download.href);
         } else{
             $downloadButton.hide();
         }
 
 
-        // Footer
-        const $menuFooter = $('.menu-inner__footer',$component);
-        $menuFooter.prepend(data.footer.copyright);
+        // Footer >>>
+        
         const copyright2 = data.footer.copyright2;
-        $('.menu-inner__footer-link', $component).attr('href', copyright2.href).attr('target', copyright2.target).html(copyright2.title);
+
+        $('.menu-inner__footer-link', $component).attr('href', copyright2.href)
+        .attr('target', copyright2.target).html(copyright2.title);
 
 
     });

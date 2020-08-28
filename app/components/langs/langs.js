@@ -22,14 +22,14 @@ $(eventBus).on('main:ready', function(e, data){
         $component.on('click', function(e) {
             e.preventDefault();
             $(eventBus).trigger('open-list-languages', 'langs_active');
-            const langAttr = $(e.target).attr('data-lang');
-            if (langAttr) {
-                $(eventBus).trigger('change-language', langAttr);
+            const lang = $(e.target).attr('data-lang');
+            if (lang) {
+                $(eventBus).trigger('change-language', lang);
             }
         });
 
-        $(eventBus).on('language-changed', function(e, langAttr) {
-            $('p', $component).html(langAttr);
+        $(eventBus).on('language-changed', function(e, lang) {
+            $('p', $component).html(lang);
         });
 
         $(eventBus).on('languages-list-opened', function(e, activeClass) {

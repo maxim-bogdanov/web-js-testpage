@@ -1,22 +1,27 @@
-import {eventBus} from './shared';
+import {eventBus,setLang,setIdPage} from './shared';
 import '../components/menu-inner/menu-inner';
 import '../components/langs/langs';
 import '../components/inner-part/inner-part';
+import '../components/helpers/data-trnslt';
 import { event, data } from 'jquery';
 
 
 $(function(){
 
     $.getJSON('data.json', function(data) {
+        setLang(data.defaultLang);
+        setIdPage(data.defaultIdPage);
         $(eventBus).trigger('main:ready', data );
     });
 
     $(eventBus).on('change-page', function(e, pageId) {
+        setIdPage(pageId);
         $(eventBus).trigger('page-changed', pageId );
     });
 
-    $(eventBus).on('change-language', function(e, langAttr) {
-        $(eventBus).trigger('language-changed', langAttr );
+    $(eventBus).on('change-language', function(e, lang) {
+        setLang(lang);
+        $(eventBus).trigger('language-changed', lang );
     });
 
     $(eventBus).on('open-list-languages', function(e, activeClass) {
