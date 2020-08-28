@@ -11,27 +11,47 @@
 
     "menu": [
         {
-            "title": "Сохранить и приумножить",
+            "title": {
+                "ru": "Сохранить и приумножить",
+                "en": "Save and grow",
+                "de": "Speichern und wachsen"
+            },
             "href": "preserve-and-increase.html",
             "id": "save_and_multiply"
         },
         {
-            "title": "Получить финансировани",
+            "title": {
+                "ru": "Получить финансированиe",
+                "en": "Get funding",
+                "de": "Holen Sie sich Finanzierung"
+            },
             "href": "get-financing.html",
             "id": "get_finance"
         },
         {
-            "title": "Решение для вашего бизнеса",
+            "title": {
+                "ru": "Решение для вашего бизнеса",
+                "en": "Solution for your business",
+                "de": "Lösung für Ihr Unternehmen"
+            },
             "href": "business-solutions.html",
             "id": "solution_for_business"
         },
         {
-            "title": "Банковское обслуживание",
+            "title": {
+                "ru": "Банковское обслуживание",
+                "en": "Banking service",
+                "de": "Bankdienstleistung"
+            },
             "href": "banking-services.html",
             "id": "banking_service"
         },
         {
-            "title": "Решения для вашей семьи и консалтинг",
+            "title": {
+                "ru": "Решения для вашей семьи и консалтинг",
+                "en": "Family solutions and consulting",
+                "de": "Familienlösungen und Beratung"
+            },
             "href": "family-solutions.html",
             "id": "solution_for_family"
         },
@@ -39,12 +59,20 @@
             "isSeparator": true
         },
         {
-            "title": "О нас",
+            "title": {
+                "ru": "О нас",
+                "en": "About",
+                "de": "Über uns"
+            },
             "href": "about.html",
             "id": "about"
         },
         {
-            "title": "Контактная информация",
+            "title": {
+                "ru": "Контактная информация",
+                "en": "Contact Information",
+                "de": "Kontaktinformationen"
+            },
             "href": "contacts.html",
             "id": "contacts"
         }

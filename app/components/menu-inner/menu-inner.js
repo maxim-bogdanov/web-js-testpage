@@ -21,7 +21,7 @@ $(eventBus).on('main:ready',function(e, data){
                 $menu.append(
                     [
                     '<li class="menu-inner__item">',
-                        `<a href="${elem.href}" data-page-id="${elem.id}">${elem.title}</a>`,
+                        `<a href="${elem.href}" data-page-id="${elem.id}">${elem.title.ru}</a>`,
                     '</li>'
                     ].join('')
                 );
@@ -44,6 +44,14 @@ $(eventBus).on('main:ready',function(e, data){
             $(`[data-page-id="${pageId}"]`,$component).addClass('menu-inner__item_choosed');
         });
 
+        // Event language-changed
+        $(eventBus).on('language-changed', function(e, lang) {
+            $('.menu-inner__item', $component).each( (index, menuItem) => {
+                // если не разделитель
+                if (!$(menuItem).filter(".menu-inner__item-line").length)
+                    $(menuItem).find('a').html(data.menu[index].title[lang]);
+            });
+        });
 
         // Buttons >>>
         let butons = ''
@@ -54,7 +62,7 @@ $(eventBus).on('main:ready',function(e, data){
                 `</div>`
             ;
         }
-        $(`<div class="links-button">${butons}</div>`).appendTo($menu);
+        $(`<div class="links-button">${butons}</div>`, $component).appendTo($menu);
 
         const $downloadButton = $('.menu-inner__download-button',$component);
         if( data.download && data.download.title ){
