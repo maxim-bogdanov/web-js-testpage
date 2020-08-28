@@ -5,17 +5,18 @@ import { event, data } from 'jquery';
 
 
 $(function(){
+
+    let info = {};
    
     $.getJSON('data.json', function(data) {
+        info = {
+            data: data
+        };
         $(eventBus).trigger('main:ready', data );
     });
 
-    $(eventBus).on('change-page', function(e, info) {
-        console.log(info.pageId);
-        // let info = {
-        //     dataa: data,
-        //     pageId: pageId
-        // };
+    $(eventBus).on('change-page', function(e, pageId) {
+        info.pageId = pageId;
         $(eventBus).trigger('page-changed', info );
     });
 
