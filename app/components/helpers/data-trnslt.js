@@ -1,5 +1,5 @@
 import { eventBus, $window, getLang } from '../../scripts/shared';
-
+import {getChildrenByStringPath} from '../../scripts/utils';
 let data;
 
 $(eventBus)
@@ -9,28 +9,30 @@ $(eventBus)
     })
     .on('language-changed',function(e, lang){
         setStaticData();
-    });
+    })
+;
 
 function setStaticData() {
-    $('[data-trnslt]').each((i,e)=>{
+    $('[data-trnslt]').each((i,e) => {
         const $e = $(e);
-        const contentPath = $e.data('trnslt');
-        const fullPath = `${contentPath}[${getLang()}]`;
-        $e.html(Object.byString(data, fullPath) );
-    })
-}
+        const contentPath = $e.data('trnslt').split(';');
+        const textPath = `${contentPath[0]}[${getLang()}]`;
+        // $e.html(getChildrenByStringPath(data, textPath) );
 
-Object.byString = function(o, s) {
-    s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-    s = s.replace(/^\./, '');           // strip a leading dot
-    var a = s.split('.');
-    for (var i = 0, n = a.length; i < n; ++i) {
-        var k = a[i];
-        if (k in o) {
-            o = o[k];
-        } else {
-            return;
-        }
-    }
-    return o;
+        if (!contentPath.length) return;
+        contentPath.forEach( (elem, index) => {
+            const attr = elem.split('|');
+
+            // атрибуты
+            if (attr.length > 1) {
+                const attrPath = attr[0];
+                const attrName = attr[1];
+                $e.attr(attrName, getChildrenByStringPath(data, `${attrPath}[${getLang()}]`));
+            // text
+            } else {
+                $e.html(getChildrenByStringPath(data, `${attr[0]}[${getLang()}]`));
+            }
+        });
+
+    })
 }

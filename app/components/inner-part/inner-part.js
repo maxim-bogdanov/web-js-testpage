@@ -1,4 +1,4 @@
-import { eventBus, $window, getLang, getIdPage } from '../../scripts/shared';
+import { eventBus, getIdPage } from '../../scripts/shared';
 
 $(eventBus).on('main:ready', function(e, data){
 
@@ -9,24 +9,33 @@ $(eventBus).on('main:ready', function(e, data){
     $components.each((i, component)=>{
 
         const $component = $(component);
+        const TIME_FADING = 300;
+        let isFirst = true;
 
-        $(eventBus).on('language-changed', function(e, lang) {
-            changeInnerPart();
-        });
+        const tpl = Handlebars.compile($('.__tpl',$component).text());
 
-        $(eventBus).on('page-changed', function(e, pageId){
-            changeInnerPart();
-        });
+        $(eventBus)
+            .on('language-changed', fadeOutContent )
+            .on('page-changed', fadeOutContent )
+        ;
+
+        function fadeOutContent() {
+            if( isFirst ) {
+                changeInnerPart();
+                isFirst = false;
+                return;
+            }
+            $component.fadeOut(TIME_FADING, changeInnerPart);
+        }
 
         function changeInnerPart(){
-            let lang = getLang();
             let pageId = getIdPage();
-            const page = data.pages[pageId];
-            $(`.inner-part__title`, $component).html(page.title[lang]);
-            $('.inner-part__image img', $component).attr('src', page.image);
-            $('.inner-part-column', $component).each( function(index, elem) {
-                $(this).html(page.content[index][lang]); 
-            });
+            const pageData = data.pages[pageId];
+
+            $component.empty().append(tpl(pageData));
+
+            // fadeOut уже сделан
+            $component.fadeIn(TIME_FADING);
         }
     });
 });

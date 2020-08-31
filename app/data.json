@@ -1,6 +1,17 @@
 {
     "header": {
-        "phone": "tel:+7-495-662-7677"
+        "phone": {
+            "href": {
+                "ru": "tel:+7-495-662-7677",
+                "en": "tel:+44-74-409-63-316",
+                "de": "tel:+49-17-426-16-30"
+            },
+            "tel": {
+                "ru": "+7 (495) 662 76 77",
+                "en": "+44 74 409 63 316",
+                "de": "+49 17 426 1630"
+            }
+        }
     },
 
     "langs": [
@@ -109,11 +120,11 @@
             "en": "&copy;&nbsp;2009-2017&nbsp;АО &laquo;Raiffeisenbank&raquo; <br>",
             "de": "&copy;&nbsp;2009-2017&nbsp;АО &laquo;Raiffeisenbank&raquo; <br>"
         },
-        "copyright2": {
+        "link": {
             "href" : "https://www.raiffeisen.ru",
             "target": "_blank",
             "title": "www.raiffeisen.ru"
-        } 
+        }
     },
         
 
@@ -127,7 +138,7 @@
             },
             "content": [
                 {
-                    "ru":"Обслуживание в московском офисе Friedrich Wilhelm Raiffeisen сочетает в себе преимущества индивидуального клиентского сервиса в Москве с инвестиционными решениями, разработанными в центральном офисе Группы Райффайзен&nbsp;в Вене. <br> <br> Каждый клиент российского офиса Friedrich Wilhelm Raiffeisen получает персонального менеджера в Москве, который осуществляет открытие и обслуживание инвестиционных счетов в Австрии, а также обеспечивает доступ к международному рынку ценных бумаг через платформы в России и за рубежом.",
+                    "ru":"111Обслуживание в московском офисе Friedrich Wilhelm Raiffeisen сочетает в себе преимущества индивидуального клиентского сервиса в Москве с инвестиционными решениями, разработанными в центральном офисе Группы Райффайзен&nbsp;в Вене. <br> <br> Каждый клиент российского офиса Friedrich Wilhelm Raiffeisen получает персонального менеджера в Москве, который осуществляет открытие и обслуживание инвестиционных счетов в Австрии, а также обеспечивает доступ к международному рынку ценных бумаг через платформы в России и за рубежом.",
                     "en":"Service in the Moscow office of Friedrich Wilhelm Raiffeisen combines the advantages of personalized customer service in Moscow with investment solutions developed at the Raiffeisen&nbsp; Group's headquarters in Vienna. <br> <br> Each client of the Russian office of Friedrich Wilhelm Raiffeisen gets a personal manager in Moscow, who opens and maintains investment accounts in Austria, as well as provides access to the international securities market through platforms in Russia and abroad.",
                     "de":"Der Service im Moskauer Büro von Friedrich Wilhelm Raiffeisen kombiniert die Vorteile eines personalisierten Kundenservice in Moskau mit Anlagelösungen, die am Hauptsitz der Raiffeisen&nbsp;-Gruppe in Wien entwickelt wurden. <br> <br> Jeder Kunde des russischen Büros von Friedrich Wilhelm Raiffeisen erhält einen persönlichen Manager in Moskau, der in Österreich Anlagekonten eröffnet und unterhält sowie über Plattformen in Russland und im Ausland Zugang zum internationalen Wertpapiermarkt bietet."
                 },

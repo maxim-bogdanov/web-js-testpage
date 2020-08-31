@@ -23,6 +23,7 @@ $(eventBus).on('main:ready', function(e, data){
             e.preventDefault();
             $(eventBus).trigger('open-list-languages', 'langs_active');
             const lang = $(e.target).attr('data-lang');
+            if (lang === $component.find('>p').html()) return; // выбрали тот же язык
             if (lang) {
                 $(eventBus).trigger('change-language', lang);
             }

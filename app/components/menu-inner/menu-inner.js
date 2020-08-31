@@ -1,4 +1,4 @@
-import { eventBus, $window } from '../../scripts/shared';
+import { eventBus, $window, getLang } from '../../scripts/shared';
 
 $(eventBus).on('main:ready',function(e, data){
 
@@ -21,7 +21,7 @@ $(eventBus).on('main:ready',function(e, data){
                 $menu.append(
                     [
                     '<li class="menu-inner__item">',
-                        `<a href="${elem.href}" data-page-id="${elem.id}">${elem.title.ru}</a>`,
+                        `<a href="${elem.href}" data-page-id="${elem.id}">${elem.title[getLang()]}</a>`,
                     '</li>'
                     ].join('')
                 );
@@ -35,6 +35,8 @@ $(eventBus).on('main:ready',function(e, data){
         $('.menu-inner__item',$component).on('click', function(e) {
             e.preventDefault();
             const pageId = $('a', e.currentTarget).data('page-id');
+            // тот же пункт
+            if ($('.menu-inner__item_choosed',$component).data('page-id') === pageId) return;
             $(eventBus).trigger('change-page', pageId );
         });
 
@@ -76,12 +78,16 @@ $(eventBus).on('main:ready',function(e, data){
 
         // Footer >>>
         
-        const copyright2 = data.footer.copyright2;
+        const link = data.footer.link;
 
-        $('.menu-inner__footer-link', $component).attr('href', copyright2.href)
-        .attr('target', copyright2.target).html(copyright2.title);
+        $('.menu-inner__footer-link', $component).attr('href', link.href)
+        .attr('target', link.target).html(link.title);
 
+        var template = Handlebars.compile("<p>{{firstname}} {{firstname}}</p>");
+        // execute the compiled template and print the output to the console
+        $('.menu-inner__footer-link', $component).append(template({ firstname: "rocks!" }));
 
+        // $('.menu-inner__footer-link', $component).after('<div></div>').addClass('hi'),html('hello');
     });
 
 });
