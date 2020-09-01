@@ -183,9 +183,7 @@ $list-p_desktop: 40px;
 
 }
 
-.menu-inner_visible{
-	
-	.menu-inner__wrapper{
+.menu-inner_visible {
 	   
 	    @include PHONE-N {
 	    	right: 0;
@@ -198,8 +196,8 @@ $list-p_desktop: 40px;
 		@include DESKTOP-N {
 			right: 0;	
 		}
-
-	}
+	
+	// right: 0;
 
 }
 
@@ -256,6 +254,7 @@ $list-p_desktop: 40px;
 		padding: 57rem 56rem;
 	}
 }
+
 
 .menu-inner__item{
 	display: block;

@@ -31,6 +31,21 @@ $(eventBus).on('main:ready',function(e, data){
         $('.menu-inner__item', $component).first().addClass('menu-inner__item_choosed');
 
 
+        // Event menu-opened
+        $(eventBus).on('menu-opened', function(e) {
+            $('.menu-inner__wrapper', $component).addClass('menu-inner_visible');
+        });
+
+        // Event close-menu
+        $('.menu-inner__button-close', $component).on('click', function() {
+            $(eventBus).trigger('close-menu');
+        });
+
+        // Event menu-closed
+        $(eventBus).on('menu-closed', function(e) {
+            $('.menu-inner__wrapper', $component).removeClass('menu-inner_visible');
+        });
+
         // Event change-page
         $('.menu-inner__item',$component).on('click', function(e) {
             e.preventDefault();

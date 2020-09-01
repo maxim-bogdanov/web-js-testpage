@@ -32,26 +32,41 @@
 	    margin: $MARGIN-PART-REM;
 	    min-height: 595rem;
 	}
+
+	&__title {
+		display: block;
+		text-align: left;
+		margin-bottom: 46px;
+		color: $sdark;
+	
+		@include FONT-CONTENT-TITLE();
+	
+		
+	
+		@include DESKTOP-N {
+			margin-bottom: 34px;
+		}
+	
+		@include DESKTOP-S{
+			margin-bottom: 46rem;
+			@include font-base_s( $min-font:48px, $add:2, $ls:.55px);
+		}
+	}
+	
 }
 
-.inner-part__title {
-    display: block;
-    text-align: left;
-    margin-bottom: 46px;
-    color: $sdark;
 
-    @include FONT-CONTENT-TITLE();
 
-    
+.is_desktop .inner-part__title {
+	color: orange;
+}
 
-    @include DESKTOP-N {
-	    margin-bottom: 34px;
-    }
+.is_phone .inner-part__title {
+	color: purple;
+}
 
-    @include DESKTOP-S{
-    	margin-bottom: 46rem;
-    	@include font-base_s( $min-font:48px, $add:2, $ls:.55px);
-    }
+.is_tablet .inner-part__title {
+	color: green;
 }
 
 .inner-part__image{

@@ -1,14 +1,13 @@
-console.log('init 1');
-
 import $ from 'jquery';
 global.$ = $;
-console.log('init 2');
 
 import Handlebars from 'handlebars';
-console.log('Handlebars import', Handlebars );
 global.Handlebars = Handlebars;
 
 import './handlebars-plugins';
+
+import gsap from 'gsap';
+global.gsap = gsap;
 
 //
 export const eventBus = window;

@@ -11,6 +11,13 @@ $(eventBus).on('main:ready', function(e, data){
         const $component = $(component);
         const TIME_FADING = 300;
         let isFirst = true;
+        
+        let $title, $column, $img;
+        function updateLinks(){
+            $title = $(".inner-part__title", component);
+            $column = $(".inner-part-column", component);
+            $img = $(".inner-part__image", component);
+        }
 
         const tpl = Handlebars.compile($('.__tpl',$component).text());
 
@@ -25,7 +32,16 @@ $(eventBus).on('main:ready', function(e, data){
                 isFirst = false;
                 return;
             }
-            $component.fadeOut(TIME_FADING, changeInnerPart);
+            
+            updateLinks();
+            //FadeOut
+            gsap.to($title,  0.2, { opacity: 0});
+            gsap.to($column,  0.3, { opacity: 0, delay: 0.2});
+            gsap.to($img,  0.3, {
+                opacity: 0,
+                delay: 0.5,
+                onComplete: changeInnerPart
+            })
         }
 
         function changeInnerPart(){
@@ -34,8 +50,13 @@ $(eventBus).on('main:ready', function(e, data){
 
             $component.empty().append(tpl(pageData));
 
-            // fadeOut уже сделан
-            $component.fadeIn(TIME_FADING);
+            updateLinks();
+
+            // FadeIn
+            gsap.from($title, .5, { x: 0, opacity: 0, scale: 0.8});
+            gsap.from($column, .7, {y: 50, opacity: 0, delay: .5});
+            gsap.from($img, .6, {x: -150, opacity: 0, delay: .5+.7});
+
         }
     });
 });
