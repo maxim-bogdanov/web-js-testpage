@@ -31,7 +31,9 @@ function setStaticData() {
             // text
             } else {
                 $e.html(getChildrenByStringPath(data, `${attr[0]}[${getLang()}]`));
+                
             }
+
         });
 
     })

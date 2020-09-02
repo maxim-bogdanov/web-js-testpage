@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $, { globalEval } from 'jquery';
 global.$ = $;
 
 import Handlebars from 'handlebars';
@@ -8,6 +8,9 @@ import './handlebars-plugins';
 
 import gsap from 'gsap';
 global.gsap = gsap;
+
+import Navigo from 'Navigo'
+global.Navifo = Navigo;
 
 //
 export const eventBus = window;

@@ -12,3 +12,4 @@ export function getChildrenByStringPath(o, s) {
     }
     return o;
 }
+

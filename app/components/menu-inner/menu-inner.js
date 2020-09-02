@@ -21,7 +21,7 @@ $(eventBus).on('main:ready',function(e, data){
                 $menu.append(
                     [
                     '<li class="menu-inner__item">',
-                        `<a href="${elem.href}" data-page-id="${elem.id}">${elem.title[getLang()]}</a>`,
+                        `<a href="${elem.href}" data-page-id="${elem.id}" data-navigo>${elem.title[getLang()]}</a>`,
                     '</li>'
                     ].join('')
                 );
@@ -47,13 +47,13 @@ $(eventBus).on('main:ready',function(e, data){
         });
 
         // Event change-page
-        $('.menu-inner__item',$component).on('click', function(e) {
-            e.preventDefault();
-            const pageId = $('a', e.currentTarget).data('page-id');
-            // тот же пункт
-            if ($('.menu-inner__item_choosed',$component).data('page-id') === pageId) return;
-            $(eventBus).trigger('change-page', pageId );
-        });
+        // $('.menu-inner__item', $component).on('click', function(e) {
+        //     e.preventDefault();
+        //     const pageId = $('a', e.currentTarget).data('page-id');
+        //     // тот же пункт
+        //     if ($('.menu-inner__item_choosed',$component).data('page-id') === pageId) return;
+        //     $(eventBus).trigger('change-page', pageId );
+        // });
 
         // Event page-changed
         $(eventBus).on('page-changed', function(e, pageId){

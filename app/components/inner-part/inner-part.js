@@ -47,7 +47,7 @@ $(eventBus).on('main:ready', function(e, data){
         function changeInnerPart(){
             let pageId = getIdPage();
             const pageData = data.pages[pageId];
-
+            console.log('changeInnerPart', pageId, pageData, data.pages );
             $component.empty().append(tpl(pageData));
 
             updateLinks();
@@ -55,7 +55,7 @@ $(eventBus).on('main:ready', function(e, data){
             // FadeIn
             gsap.from($title, .5, { x: 0, opacity: 0, scale: 0.8});
             gsap.from($column, .7, {y: 50, opacity: 0, delay: .5});
-            gsap.from($img, .6, {x: -150, opacity: 0, delay: .5+.7});
+            gsap.from($img, .6, {x: -150, opacity: 0, delay: .5 + .7});
 
         }
     });

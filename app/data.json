@@ -21,7 +21,7 @@
     ],
 
     "defaultLang": "ru",
-    "defaultIdPage": "save_and_multiply",
+    "defaultIdPage": "save-and-multiply",
 
     "menu": [
         {
@@ -30,8 +30,8 @@
                 "en": "Save and grow",
                 "de": "Speichern und wachsen"
             },
-            "href": "preserve-and-increase.html",
-            "id": "save_and_multiply"
+            "href": "save-and-multiply",
+            "id": "save-and-multiply"
         },
         {
             "title": {
@@ -39,8 +39,8 @@
                 "en": "Get funding",
                 "de": "Holen Sie sich Finanzierung"
             },
-            "href": "get-financing.html",
-            "id": "get_finance"
+            "href": "get-finance",
+            "id": "get-finance"
         },
         {
             "title": {
@@ -48,8 +48,8 @@
                 "en": "Solution for your business",
                 "de": "Lösung für Ihr Unternehmen"
             },
-            "href": "business-solutions.html",
-            "id": "solution_for_business"
+            "href": "business-solutions",
+            "id": "business-solutions"
         },
         {
             "title": {
@@ -57,8 +57,8 @@
                 "en": "Banking service",
                 "de": "Bankdienstleistung"
             },
-            "href": "banking-services.html",
-            "id": "banking_service"
+            "href": "banking-service",
+            "id": "banking-service"
         },
         {
             "title": {
@@ -66,8 +66,8 @@
                 "en": "Family solutions and consulting",
                 "de": "Familienlösungen und Beratung"
             },
-            "href": "family-solutions.html",
-            "id": "solution_for_family"
+            "href": "family-solutions",
+            "id": "family-solutions"
         },
         {
             "isSeparator": true
@@ -78,7 +78,7 @@
                 "en": "About",
                 "de": "Über uns"
             },
-            "href": "about.html",
+            "href": "about",
             "id": "about"
         },
         {
@@ -87,7 +87,7 @@
                 "en": "Contact Information",
                 "de": "Kontaktinformationen"
             },
-            "href": "contacts.html",
+            "href": "contacts",
             "id": "contacts"
         }
     ],
@@ -100,7 +100,7 @@
         },
         {
             "title": "R-Dealer",
-            "href": "r-dealer.html",
+            "href": "r-dealer",
             "class": "button_small"
         }
     ],
@@ -129,7 +129,7 @@
         
 
     "pages": {
-        "save_and_multiply": {
+        "save-and-multiply": {
             "image":"images/inner-illustrations-5.png",
             "title": {
                 "ru": "Сохранить и приумножить",
@@ -149,7 +149,7 @@
                 }
             ]
         },
-        "get_finance": {
+        "get-finance": {
             "image":"images/inner-illustrations-4.png",
             "title": {
                 "ru": "Получить финансированиe",
@@ -169,7 +169,7 @@
                 }
             ]
         },
-        "solution_for_business": {
+        "business-solutions": {
             "image":"images/inner-illustrations-3.png",
             "title": {
                 "ru": "Решение для вашего бизнеса",
@@ -189,7 +189,7 @@
                 }
             ]
         },
-        "banking_service": {
+        "banking-service": {
             "image":"images/inner-illustrations-2.png",
             "title": {
                 "ru": "Банковское обслуживание",
@@ -209,7 +209,7 @@
                 }
             ]
         },
-        "solution_for_family": {
+        "family-solutions": {
             "image":"images/inner-illustrations-1.png",
             "title": {
                 "ru": "Решения для вашей семьи и консалтинг",

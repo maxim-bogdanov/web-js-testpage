@@ -138,11 +138,11 @@
     ]
   },
   "dependencies": {
-    "swiper": "latest",
     "handlebars": "latest",
     "jquery": "latest",
-    "navigo": "latest",
+    "navigo": "^7.1.2",
     "normalize.css": "latest",
+    "swiper": "latest",
     "tingle.js": "^0.13.2"
   }
 }

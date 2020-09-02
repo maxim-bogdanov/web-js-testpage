@@ -1,11 +1,11 @@
-
 import { eventBus, setLang, setIdPage } from './shared';
 import '../components/menu-inner/menu-inner';
 import '../components/langs/langs';
 import '../components/inner-part/inner-part';
 import '../components/helpers/data-trnslt';
 import '../components/header/header';
-
+import '../components/adaptive/adaptive';
+import '../scripts/router';
 
 
 $(function () {
@@ -15,7 +15,7 @@ $(function () {
         setIdPage(data.defaultIdPage);
         $(eventBus)
             .trigger('main:ready', data)
-            .trigger('change-page', data.defaultIdPage )
+            // .trigger('change-page', data.defaultIdPage )
         ;
     });
 
@@ -41,15 +41,6 @@ $(function () {
         $(eventBus).trigger('languages-list-opened', activeClass);
     });
 
-    $(window).on('load resize', function(e) {
-        const $body = $('body');
-        const windowWidth = window.innerWidth;
 
-        $body.removeClass('is_phone is_desktop is_tablet');
-
-        if (windowWidth < 768) $body.addClass('is_phone');
-        else if (windowWidth >= 768 && windowWidth < 1024) $body.addClass('is_tablet');
-        else $body.addClass('is_desktop');
-    });
 
 });
