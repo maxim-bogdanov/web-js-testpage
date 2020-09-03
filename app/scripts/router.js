@@ -13,97 +13,57 @@ $(eventBus)
         console.log('DataStorage',DataStorage);
         dataStorage.addDataStorage( [LocalStorage, Cookie] );
 
+        dataStorage.setData("lang", getLang());
+
+        $(`a[data-page-id]`).attr('href', (index, value) => value += '/' + dataStorage.getData('lang'));
+
         $($window).on('404error', function(e) {
             $('.inner-part').html('<div class="error404">Страница не найдена</div>');
         });
 
         $(eventBus).on('language-changed', function() {
-            // console.log(router.lastRouteResolved());
 
             dataStorage.setData("lang", getLang());
-            console.log(dataStorage.getData('lang'));
-            dataStorage.deleteData('lang');
-            console.log(dataStorage.getData('lang'));
+
+            $(`a[data-page-id]`).attr('href', (index, value) => 
+            value = value.slice(0, value.length - 2) + dataStorage.getData('lang'));
+
+            router.navigate(getIdPage() + "/" + dataStorage.getData('lang'));
         });
 
         router.on({
+            ':page/ru': function (params) {routerChangePage(params, 'ru')},
+            ':page/en': function (params) {routerChangePage(params, 'en')},
+            ':page/de': function (params) {routerChangePage(params, 'de')},
             ':page': function (params) {
-                // const $links = $(`.menu-inner__item a[data-navigo]`);
-                // if (!$links.filter(`[href=${params.page}]`).length)
-
                 // если такой страницы нет
-                if (!$(`[href=${params.page}]`).length) { 
-                    // throw new Error("404 not found");
+                const link = params.page + '/' + dataStorage.getData('lang');
+                if (!$(`[href="${link}"]`).length) { 
                     $(eventBus).trigger('404error');
                     return;
-                } 
+                }
 
-                $(eventBus).trigger('change-page', params.page );
+                router.navigate(params.page + "/" + dataStorage.getData('lang'));
             },
             '*': function(){
                 // На главную если ничего нет
-                router.navigate(_data.defaultIdPage);
+                router.navigate(_data.defaultIdPage + '/' + dataStorage.getData('lang'));
             }
         })
-        // .notFound( (query) => console.log('not found') )
         .resolve();
-        // let linkCurrentPage;
 
+        function routerChangePage(params, lang) {
+                // если такой страницы нет
+                if (!$(`[data-page-id=${params.page}]`).length) { 
+                    $(eventBus).trigger('404error');
+                    return;
+                }
+                
+                // если другой язык, то меняем
+                if (dataStorage.getData('lang') !== lang)
+                    $(eventBus).trigger('change-language', lang);
 
-        
-
-        /*
-        const $components = $('.menu-inner__list');
-
-        if(!$components.length) return;
-    
-        $components.each((i,component) => {
-    
-            const $component = $(component);
-            
-            let links = $('.menu-inner__item a', $component);
-            sessionStorage.setItem('links', JSON.stringify(links));
-
-            // router.on( () => links.last().attr('href') );
-            // console.log(links.last().attr('href'));
-            const mainPage = links.eq(0);
-
-            // router.navigate(mainPage.attr('href'));
-
-            // console.log(mainPage.data('page-id'));
-            $(eventBus).trigger('change-page', mainPage.data('page-id'));
-
-            $(eventBus).on('page-changed', function(e, pageId){
-
-                let location = links.filter(`[data-page-id="${pageId}"]`).attr('href');
-                linkCurrentPage = location;
-                sessionStorage.setItem('linkCurrentPage', linkCurrentPage);
-                router.navigate(location);
-
-            });
-
-            $($window).on('hashchange', function(e){
-      
-                const newLink = ((e.originalEvent.newURL).split(hash))[1];
-                const pageId = links.filter(`[href="${newLink}"]`).data('page-id');
-                $(eventBus).trigger('change-page', pageId);
-            });
-    
-            router.resolve();
-        });
-
-        // var reloaded  = function(){...} //страницу перезагрузили
-
-        // $($window).on('load', function() {
-        //     let loaded = sessionStorage.getItem('loaded');
-        //     if(loaded) {
-        //         const pageId = links.filter(`[href="${linkCurrentPage}"]`).data('page-id');
-        //         $(eventBus).trigger('change-page', pageId);
-        //     } else {
-        //         sessionStorage.setItem('loaded', true);
-        //     }
-        // })
-
-        */
+                $(eventBus).trigger('change-page', params.page );
+        }
 
     })

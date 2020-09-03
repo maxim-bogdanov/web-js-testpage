@@ -6,7 +6,7 @@ $(eventBus).on('main:ready', function(e, data){
     if(!$components.length) return;
 
 
-    $components.each((i, component)=>{
+    $components.each((i, component) => {
 
         const $component = $(component);
         const TIME_FADING = 300;
@@ -35,8 +35,8 @@ $(eventBus).on('main:ready', function(e, data){
             
             updateLinks();
             //FadeOut
-            gsap.to($title,  0.2, { opacity: 0});
-            gsap.to($column,  0.3, { opacity: 0, delay: 0.2});
+            gsap.to($title,  0.2, { opacity: 0 });
+            gsap.to($column,  0.3, { opacity: 0, delay: 0.2 });
             gsap.to($img,  0.3, {
                 opacity: 0,
                 delay: 0.5,
@@ -47,7 +47,6 @@ $(eventBus).on('main:ready', function(e, data){
         function changeInnerPart(){
             let pageId = getIdPage();
             const pageData = data.pages[pageId];
-            console.log('changeInnerPart', pageId, pageData, data.pages );
             $component.empty().append(tpl(pageData));
 
             updateLinks();

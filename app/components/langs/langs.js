@@ -1,4 +1,4 @@
-import { eventBus, $window } from '../../scripts/shared';
+import { eventBus, $window, getLang } from '../../scripts/shared';
 import { event } from 'jquery';
 
 $(eventBus).on('main:ready', function(e, data){
@@ -10,7 +10,7 @@ $(eventBus).on('main:ready', function(e, data){
 
         const $component = $(component);
 
-        $component.find('p').html('ru');
+        $component.find('p').html(getLang());
 
         let langs = '';
         for (let lang of data.langs) {

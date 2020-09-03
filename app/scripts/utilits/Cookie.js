@@ -7,9 +7,11 @@ export class Cookie {
     // }
 
     isAvailable(){
-        return false;
+        this.setItem("isWorking", true);
+        console.log(this.getItem("isWorking"), "cookie");
+        return (this.getItem("isWorking"));
     }
-    
+
     setItem(name, value, options = {}) {
 
         options = {

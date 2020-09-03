@@ -4,25 +4,25 @@ class DataStorage {
   #currentStorageSource;
 
   setData(name, data) {
-    this.#dataStorages[0].setItem(name, data);
+    this.#currentStorageSource.setItem(name, data);
   }
 
   getData(name) {
-    return this.#dataStorages[0].getItem(name);
+    return this.#currentStorageSource.getItem(name);
   }
 
   deleteData(name) {
-    this.#dataStorages[0].deleteItem(name);
+    this.#currentStorageSource.deleteItem(name);
   }
 
-  addDataStorage( dataStorages ){
+  addDataStorage( dataStorages ) {
     if( !dataStorages ) return;
     if( !Array.isArray(dataStorages) ) dataStorages = [dataStorages];
     
-    dataStorages.every((dataStorage,i) => {
+    dataStorages.every((dataStorage, i) => {
         // dataStorage.init( this );
         const storageSource = new dataStorage();
-        console.log(i,'',storageSource)
+        console.log(i,'',storageSource);
         if( storageSource.isAvailable() ){
           this.#currentStorageSource = storageSource;
           return false;

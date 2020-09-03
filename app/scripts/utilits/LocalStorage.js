@@ -7,7 +7,9 @@ export class LocalStorage {
     // }
 
     isAvailable(){
-        return true;
+        this.setItem("isWorking", true);
+        console.log(this.getItem("isWorking"), "localStorage");
+        return (this.getItem("isWorking"));
     }
 
     setItem(name, data) {

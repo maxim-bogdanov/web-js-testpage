@@ -98,9 +98,6 @@ $(eventBus).on('main:ready',function(e, data){
         $('.menu-inner__footer-link', $component).attr('href', link.href)
         .attr('target', link.target).html(link.title);
 
-        var template = Handlebars.compile("<p>{{firstname}} {{firstname}}</p>");
-        // execute the compiled template and print the output to the console
-        $('.menu-inner__footer-link', $component).append(template({ firstname: "rocks!" }));
 
         // $('.menu-inner__footer-link', $component).after('<div></div>').addClass('hi'),html('hello');
     });
